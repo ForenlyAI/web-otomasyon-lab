@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pratik Mağaza · Web Otomasyonu 101</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html" class="aktif">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<section class="vitrin">
+  <div class="vitrin-sol">
+    <h1>Pratik Mağaza</h1>
+    <p>Botunuzu güvenle deneyebileceğiniz alıştırma mağazası. Bir ürün arayın.</p>
+    <form class="arama-kutu" id="arama-formu" action="index.html" method="get" role="search">
+      <input type="text" id="arama" name="q" placeholder="Ürün ara… (ör. kulaklık)" autocomplete="off" aria-label="Ürün ara">
+      <button class="dugme" id="ara-dugme" type="submit">Ara</button>
+    </form>
+  </div>
+  <div class="vitrin-rozet">
+    <strong id="toplam-urun">50</strong>ürün · 6 kategori<br>
+    Hepsi sahte, hepsi güvenli.
+  </div>
+</section>
+
+<div class="sonuc-cubugu">
+  <div id="sonuc-sayisi" aria-live="polite">Ürünler yükleniyor…</div>
+  <a href="urunler/sayfa-1.html">JavaScript'siz liste (sayfa 1–5) →</a>
+</div>
+<section class="urun-izgara" id="urun-listesi"></section>
+
+<h2>Alıştırma sayfaları</h2>
+<div class="alistirmalar">
+  <a href="urunler/sayfa-1.html">Ürün listesi<span>5 sayfa, statik HTML</span></a>
+  <a href="tablo.html">Kargo tablosu<span>tablo ve liste verisi</span></a>
+  <a href="giris.html">Giriş<span>oturum ve çerez</span></a>
+  <a href="iletisim.html">İletişim formu<span>form doldurma, bekleme</span></a>
+  <a href="gecikmeli.html">Gecikmeli içerik<span>açık bekleme</span></a>
+  <a href="sonsuz.html">Sonsuz liste<span>kaydırma ile yükleme</span></a>
+  <a href="pencere.html">Pencere ve çerçeve<span>yeni sekme, iframe</span></a>
+  <a href="randevu.html">Randevu<span>randevu botu projesi</span></a>
+  <a href="basvuru.html">Başvuru formu<span>CSV'den toplu doldurma</span></a>
+  <a href="captcha.html">CAPTCHA<span>botun durması gereken yer</span></a>
+  <a href="robots.txt">robots.txt<span>tarama kuralları</span></a>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+
+<script>
+(function () {
+  var IKON = {"Ses": ["k-ses", "🎧"], "Elektronik": ["k-elektronik", "💻"], "Ev & Yaşam": ["k-ev", "🏠"],
+              "Kitap": ["k-kitap", "📚"], "Spor": ["k-spor", "🏃"], "Ofis": ["k-ofis", "📎"]};
+  var urunler = [];
+  var yuklendi = false, bekleyen = null;
+  var liste = document.getElementById('urun-listesi');
+  var sayac = document.getElementById('sonuc-sayisi');
+  var kutu = document.getElementById('arama');
+
+  function tl(x) {
+    return x.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' TL';
+  }
+  function kacis(s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; });
+  }
+  function stok(n) {
+    if (n === 0) return '<span class="stok tukendi" data-stok="0">Tükendi</span>';
+    if (n < 5) return '<span class="stok az" data-stok="' + n + '">Son ' + n + ' adet</span>';
+    return '<span class="stok" data-stok="' + n + '">Stokta: ' + n + ' adet</span>';
+  }
+  function kart(u) {
+    var k = IKON[u.kategori];
+    return '<article class="urun" data-id="' + u.id + '" data-kategori="' + kacis(u.kategori) + '">' +
+      '<div class="urun-gorsel ' + k[0] + '" aria-hidden="true">' + k[1] + '</div>' +
+      '<span class="kategori">' + kacis(u.kategori) + '</span>' +
+      '<h3 class="urun-ad">' + kacis(u.ad) + '</h3>' +
+      '<span class="fiyat" data-fiyat="' + u.fiyat.toFixed(2) + '">' + tl(u.fiyat) + '</span>' +
+      stok(u.stok) +
+      '<a class="detay" href="urun/' + u.id + '.html">Detayı gör →</a></article>';
+  }
+  function kucuk(s) { return s.toLocaleLowerCase('tr-TR'); }
+
+  function listele(sorgu) {
+    var q = kucuk((sorgu || '').trim());
+    var bulunan = q ? urunler.filter(function (u) {
+      return kucuk(u.ad).indexOf(q) !== -1 || kucuk(u.kategori).indexOf(q) !== -1;
+    }) : urunler;
+    liste.innerHTML = bulunan.length ? bulunan.map(kart).join('')
+      : '<p class="bos-sonuc">Aramanızla eşleşen ürün yok.</p>';
+    sayac.textContent = q ? bulunan.length + ' ürün bulundu' : 'Tüm ürünler (' + urunler.length + ')';
+    sayac.setAttribute('data-sayi', bulunan.length);
+  }
+
+  document.getElementById('arama-formu').addEventListener('submit', function (olay) {
+    olay.preventDefault();
+    var q = kutu.value;
+    history.replaceState(null, '', q.trim() ? '?q=' + encodeURIComponent(q.trim()) : 'index.html');
+    if (!yuklendi) { bekleyen = q; sayac.textContent = 'Aranıyor…'; return; }
+    listele(q);
+  });
+
+  fetch('veri/urunler.json', {cache: 'no-store'})
+    .then(function (r) { return r.json(); })
+    .then(function (veri) {
+      urunler = veri;
+      document.getElementById('toplam-urun').textContent = veri.length;
+      yuklendi = true;
+      var q = bekleyen !== null ? bekleyen : (new URLSearchParams(location.search).get('q') || '');
+      kutu.value = q;
+      listele(q);
+    })
+    .catch(function () {
+      sayac.textContent = 'Ürünler yüklenemedi. Siteyi "uv run python sunucu.py" ile açın.';
+    });
+})();
+</script>
+</body>
+</html>

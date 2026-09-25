@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonsuz Liste · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html" class="aktif">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Sonsuz liste</h1>
+<p class="alt-baslik">Sayfanın sonuna kaydırdıkça 10 kart daha yüklenir (en fazla 50).</p>
+<div class="sayac" id="kart-sayisi">10 / 50 kart</div>
+<section class="kart-liste" id="kartlar"></section>
+<div id="yukleniyor" class="yukleniyor gizli" style="justify-content:center;padding:24px"><span class="donen"></span> Yükleniyor…</div>
+<p id="son" class="basari gizli" style="text-align:center;margin-top:20px">Tüm kartlar yüklendi (50).</p>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+(function () {
+  var EN_FAZLA = 50, PARTI = 10;
+  var KONULAR = ['Selenium', 'Playwright', 'BeautifulSoup', 'requests', 'CSS seçici', 'XPath',
+                 'Açık bekleme', 'Çerez', 'Headless', 'robots.txt'];
+  var kartlar = document.getElementById('kartlar');
+  var yukleniyor = document.getElementById('yukleniyor');
+  var mesgul = false;
+
+  function ekle() {
+    var n = kartlar.children.length;
+    for (var i = n + 1; i <= Math.min(n + PARTI, EN_FAZLA); i++) {
+      var d = document.createElement('article');
+      d.className = 'kart';
+      d.setAttribute('data-no', i);
+      d.innerHTML = '<div class="no">' + i + '</div><div><h3>Kart ' + i + ' · ' +
+        KONULAR[(i - 1) % KONULAR.length] + '</h3><p>Kaydırarak yüklenen içerik örneği.</p></div>';
+      kartlar.appendChild(d);
+    }
+    var toplam = kartlar.children.length;
+    document.getElementById('kart-sayisi').textContent = toplam + ' / ' + EN_FAZLA + ' kart';
+    if (toplam >= EN_FAZLA) document.getElementById('son').classList.remove('gizli');
+  }
+
+  function kontrol() {
+    if (mesgul || kartlar.children.length >= EN_FAZLA) return;
+    var dip = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+    if (!dip) return;
+    mesgul = true;
+    yukleniyor.classList.remove('gizli');
+    setTimeout(function () {
+      ekle();
+      yukleniyor.classList.add('gizli');
+      mesgul = false;
+    }, 600);
+  }
+
+  ekle();
+  window.addEventListener('scroll', kontrol, {passive: true});
+})();
+</script>
+</body>
+</html>

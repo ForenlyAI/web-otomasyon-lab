@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Başvuru Formu · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html" class="aktif">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Mağaza asistanı başvurusu</h1>
+<p class="alt-baslik">Toplu form doldurma alıştırması: <code>veri/basvurular.csv</code> dosyasındaki her satırı bu forma girin.</p>
+<form class="form panel" id="basvuru-formu" novalidate>
+  <div class="form-satir uclu">
+    <div><label class="baslik" for="ad">Ad</label><input type="text" id="ad" name="ad"></div>
+    <div><label class="baslik" for="soyad">Soyad</label><input type="text" id="soyad" name="soyad"></div>
+    <div><label class="baslik" for="eposta">E-posta</label><input type="email" id="eposta" name="eposta" placeholder="ornek@example.com"></div>
+  </div>
+  <div class="form-satir uclu">
+    <div><label class="baslik" for="telefon">Telefon</label><input type="tel" id="telefon" name="telefon" placeholder="0555 000 00 00"></div>
+    <div>
+      <label class="baslik" for="sehir">Şehir</label>
+      <select id="sehir" name="sehir">
+        <option value="">Seçiniz…</option>
+        <option>Adana</option><option>Ankara</option><option>Antalya</option><option>Bursa</option>
+        <option>Eskişehir</option><option>İstanbul</option><option>İzmir</option><option>Konya</option>
+        <option>Trabzon</option><option>Van</option>
+      </select>
+    </div>
+    <div>
+      <span class="baslik" style="display:block;font-weight:700;font-size:15px;margin-bottom:5px">Deneyim</span>
+      <div class="secenekler" style="padding-top:8px">
+        <label><input type="radio" name="deneyim" id="deneyim-yok" value="yok"> Yok</label>
+        <label><input type="radio" name="deneyim" id="deneyim-1-3" value="1-3"> 1–3 yıl</label>
+        <label><input type="radio" name="deneyim" id="deneyim-3-plus" value="3+"> 3+ yıl</label>
+      </div>
+    </div>
+  </div>
+  <div><label class="baslik" for="aciklama">Açıklama</label><textarea id="aciklama" name="aciklama" style="min-height:56px" rows="2"></textarea></div>
+  <div id="hata" class="hata gizli" role="alert"></div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <button class="dugme" id="kaydet" type="submit">Kaydet</button>
+    <button class="dugme dugme-ikincil" id="temizle" type="button">Kayıtları temizle</button>
+    <span id="kayit-mesaj" class="gizli" style="color:#1f8a4c;font-weight:700">Başvuru kaydedildi.</span>
+  </div>
+</form>
+
+<h2>Kayıtlı başvurular <span id="basvuru-sayisi" style="color:#5b6477;font-weight:600">(0)</span></h2>
+<table class="veri" id="basvurular">
+  <thead><tr><th>#</th><th>Ad Soyad</th><th>E-posta</th><th>Telefon</th><th>Şehir</th><th>Deneyim</th></tr></thead>
+  <tbody></tbody>
+</table>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+(function () {
+  var ANAHTAR = 'basvurular';
+  var govde = document.querySelector('#basvurular tbody');
+
+  function oku() {
+    try { return JSON.parse(sessionStorage.getItem(ANAHTAR)) || []; } catch (e) { return []; }
+  }
+  function yaz(liste) {
+    try { sessionStorage.setItem(ANAHTAR, JSON.stringify(liste)); } catch (e) {}
+  }
+  function hucre(tr, metin) { var td = document.createElement('td'); td.textContent = metin; tr.appendChild(td); }
+  function ciz() {
+    var liste = oku();
+    govde.innerHTML = '';
+    liste.forEach(function (b, i) {
+      var tr = document.createElement('tr');
+      tr.className = 'basvuru';
+      hucre(tr, i + 1); hucre(tr, b.ad + ' ' + b.soyad); hucre(tr, b.eposta);
+      hucre(tr, b.telefon); hucre(tr, b.sehir); hucre(tr, b.deneyim);
+      govde.appendChild(tr);
+    });
+    if (!liste.length) {
+      govde.innerHTML = '<tr><td colspan="6" style="color:#5b6477;text-align:center">Henüz başvuru yok.</td></tr>';
+    }
+    document.getElementById('basvuru-sayisi').textContent = '(' + liste.length + ')';
+  }
+
+  document.getElementById('basvuru-formu').addEventListener('submit', function (olay) {
+    olay.preventDefault();
+    var f = olay.target;
+    var deneyim = f.querySelector('input[name="deneyim"]:checked');
+    var b = {
+      ad: f.ad.value.trim(), soyad: f.soyad.value.trim(), eposta: f.eposta.value.trim(),
+      telefon: f.telefon.value.trim(), sehir: f.sehir.value, deneyim: deneyim ? deneyim.value : '',
+      aciklama: f.aciklama.value.trim()
+    };
+    var eksik = [];
+    if (!b.ad) eksik.push('ad');
+    if (!b.soyad) eksik.push('soyad');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(b.eposta)) eksik.push('geçerli e-posta');
+    if (!b.sehir) eksik.push('şehir');
+    if (!b.deneyim) eksik.push('deneyim');
+    var hata = document.getElementById('hata');
+    if (eksik.length) {
+      hata.textContent = 'Eksik alan: ' + eksik.join(', ');
+      hata.classList.remove('gizli');
+      return;
+    }
+    hata.classList.add('gizli');
+    var liste = oku(); liste.push(b); yaz(liste);
+    f.reset();
+    ciz();
+    var m = document.getElementById('kayit-mesaj');
+    m.classList.remove('gizli');
+    setTimeout(function () { m.classList.add('gizli'); }, 1500);
+  });
+
+  document.getElementById('temizle').addEventListener('click', function () { yaz([]); ciz(); });
+  ciz();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bisiklet Kaskı · Pratik Mağaza</title>
+<link rel="stylesheet" href="../css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="../index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="../index.html">Mağaza</a><a href="../urunler/sayfa-1.html" class="aktif">Ürünler</a><a href="../tablo.html">Tablo</a><a href="../giris.html">Giriş</a><a href="../iletisim.html">İletişim</a><a href="../gecikmeli.html">Gecikmeli</a><a href="../sonsuz.html">Sonsuz</a><a href="../pencere.html">Pencere</a><a href="../randevu.html">Randevu</a><a href="../basvuru.html">Başvuru</a><a href="../captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<div class="ekmek"><a href="../index.html">Mağaza</a> › <a href="../urunler/sayfa-3.html">Ürünler</a> › Bisiklet Kaskı</div>
+<article class="urun-detay panel" data-id="1029">
+  <div class="detay-kutu">
+    <div class="detay-gorsel k-spor" aria-hidden="true">🏃</div>
+    <div>
+      <span class="kategori" id="kategori">Spor</span>
+      <h1 id="urun-ad">Bisiklet Kaskı</h1>
+      <p><span class="fiyat" id="fiyat" data-fiyat="1099.00" style="font-size:30px">1.099,00 TL</span></p>
+      <p><span class="stok" id="stok" data-stok="13">Stokta: 13 adet</span></p>
+      <p id="aciklama">Evde ve dışarıda antrenman için hafif ve sağlam.</p>
+      <table class="ozellikler">
+        <tr><th>Ürün kodu</th><td id="urun-kodu">PM-1029</td></tr>
+        <tr><th>Kategori</th><td>Spor</td></tr>
+        <tr><th>Kargo</th><td>1–3 iş günü</td></tr>
+      </table>
+      <p style="margin-top:20px"><button class="dugme" id="sepete-ekle" type="button">Sepete ekle</button></p>
+      <p id="sepet-mesaj" class="basari gizli">Bu bir alıştırma sitesidir, sepet yoktur. Tıklama çalıştı!</p>
+      <p><a href="../urunler/sayfa-3.html" id="listeye-don">← Ürün listesine dön</a></p>
+    </div>
+  </div>
+</article>
+<script>
+  var d = document.getElementById('sepete-ekle');
+  if (d) d.addEventListener('click', function () {
+    document.getElementById('sepet-mesaj').classList.remove('gizli');
+  });
+</script>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+</body>
+</html>

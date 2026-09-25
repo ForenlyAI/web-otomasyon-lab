@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Randevu · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html" class="aktif">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Teknik servis randevusu</h1>
+<p class="alt-baslik">Randevu botu alıştırması. Tarih seçin, boş saatler 1 saniye içinde gelir.</p>
+<div class="iki-sutun">
+  <section class="panel form">
+    <div>
+      <label class="baslik" for="tarih">1. Tarih</label>
+      <select id="tarih" name="tarih"><option value="">Tarih seçin…</option></select>
+    </div>
+    <div>
+      <span class="baslik" style="display:block;font-weight:700;font-size:15px;margin-bottom:5px">2. Saat</span>
+      <div id="saat-yukleniyor" class="yukleniyor gizli"><span class="donen"></span> Boş saatler getiriliyor…</div>
+      <p id="saat-bilgi" style="margin:0;color:#5b6477">Önce bir tarih seçin.</p>
+      <div class="saatler" id="saatler"></div>
+      <p id="saat-yok" class="hata gizli" style="margin-top:10px">Bu gün için boş saat yok. Başka bir gün deneyin.</p>
+    </div>
+    <div class="form-satir">
+      <div>
+        <label class="baslik" for="ad-soyad">3. Ad Soyad</label>
+        <input type="text" id="ad-soyad" name="ad-soyad" placeholder="Ad Soyad">
+      </div>
+      <div>
+        <label class="baslik" for="telefon">Telefon</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="0555 000 00 00">
+      </div>
+    </div>
+    <div id="randevu-hata" class="hata gizli" role="alert"></div>
+    <div><button class="dugme" id="randevu-onay" type="button">Randevuyu onayla</button></div>
+  </section>
+  <aside>
+    <div id="onay" class="basari gizli" role="status">
+      <div style="font-size:20px">Randevunuz oluşturuldu</div>
+      <div id="onay-ozet" style="font-weight:400;margin:6px 0 10px"></div>
+      <div>Onay kodu</div>
+      <div class="onay-kodu" id="onay-kodu"></div>
+    </div>
+    <p class="not" style="margin-top:16px">Üstü çizili saatler doludur (<code>disabled</code>).
+      Tarihler sabit bir başlangıç gününden hesaplanır: <span id="baz-tarih"></span>.</p>
+  </aside>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+(function () {
+  var veri = null, secilenSaat = null;
+  var tarih = document.getElementById('tarih');
+  var saatler = document.getElementById('saatler');
+  var hata = document.getElementById('randevu-hata');
+
+  function kod(metin) {
+    // Aynı tarih + saat + ad için hep aynı kodu üretir (ekran görüntüleri sabit kalsın).
+    var h = 2166136261;
+    for (var i = 0; i < metin.length; i++) { h ^= metin.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+    var harf = 'ABCDEFGHJKLMNPRSTUVYZ23456789', k = '';
+    for (var j = 0; j < 4; j++) { k += harf[h % harf.length]; h = Math.floor(h / harf.length); }
+    return 'RND-' + k;
+  }
+
+  function gunBul(t) { return veri.gunler.filter(function (g) { return g.tarih === t; })[0]; }
+
+  fetch('veri/randevu.json', {cache: 'no-store'}).then(function (r) { return r.json(); }).then(function (v) {
+    veri = v;
+    document.getElementById('baz-tarih').textContent = v.baz_tarih;
+    v.gunler.forEach(function (g) {
+      var o = document.createElement('option');
+      o.value = g.tarih; o.textContent = g.etiket;
+      tarih.appendChild(o);
+    });
+  });
+
+  tarih.addEventListener('change', function () {
+    secilenSaat = null;
+    saatler.innerHTML = '';
+    document.getElementById('saat-yok').classList.add('gizli');
+    document.getElementById('saat-bilgi').classList.add('gizli');
+    if (!tarih.value) { document.getElementById('saat-bilgi').classList.remove('gizli'); return; }
+    var yuk = document.getElementById('saat-yukleniyor');
+    yuk.classList.remove('gizli');
+    var istenen = tarih.value;
+    setTimeout(function () {
+      if (tarih.value !== istenen) return;
+      yuk.classList.add('gizli');
+      var gun = gunBul(istenen);
+      gun.saatler.forEach(function (s) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'saat'; b.textContent = s.saat;
+        b.setAttribute('data-saat', s.saat);
+        if (s.dolu) { b.disabled = true; b.title = 'Dolu'; }
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call(saatler.querySelectorAll('.saat'), function (x) { x.classList.remove('secili'); });
+          b.classList.add('secili');
+          secilenSaat = s.saat;
+        });
+        saatler.appendChild(b);
+      });
+      if (gun.saatler.every(function (s) { return s.dolu; })) {
+        document.getElementById('saat-yok').classList.remove('gizli');
+      }
+    }, 1000);
+  });
+
+  document.getElementById('randevu-onay').addEventListener('click', function () {
+    var ad = document.getElementById('ad-soyad').value.trim();
+    var tel = document.getElementById('telefon').value.trim();
+    var eksik = [];
+    if (!tarih.value) eksik.push('tarih');
+    if (!secilenSaat) eksik.push('saat');
+    if (!ad) eksik.push('ad soyad');
+    if (tel.replace(/\D/g, '').length < 10) eksik.push('telefon');
+    if (eksik.length) {
+      hata.textContent = 'Eksik alan: ' + eksik.join(', ');
+      hata.classList.remove('gizli');
+      return;
+    }
+    hata.classList.add('gizli');
+    var gun = gunBul(tarih.value);
+    gun.saatler.forEach(function (s) { if (s.saat === secilenSaat) s.dolu = true; });
+    var secili = saatler.querySelector('.saat.secili');
+    if (secili) { secili.disabled = true; secili.classList.remove('secili'); }
+    document.getElementById('onay-ozet').textContent = gun.etiket + ', saat ' + secilenSaat + ' · ' + ad;
+    document.getElementById('onay-kodu').textContent = kod(tarih.value + '|' + secilenSaat + '|' + ad);
+    document.getElementById('onay').classList.remove('gizli');
+    secilenSaat = null;
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hesabım · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+<script>
+  // Oturum çerezi yoksa giriş sayfasına dön.
+  var eslesme = document.cookie.match(/(?:^|;\s*)oturum=([^;]+)/);
+  if (!eslesme) { location.replace('giris.html'); }
+</script>
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<section class="panel">
+  <h1 id="karsilama">Hoş geldin</h1>
+  <p class="alt-baslik">Oturum çerezin: <code id="cerez-degeri">—</code></p>
+  <table class="ozellikler">
+    <tr><th>Üyelik</th><td>Öğrenci</td></tr>
+    <tr><th>Açık sipariş</th><td id="siparis-sayisi">2</td></tr>
+    <tr><th>Puan</th><td id="puan">150</td></tr>
+  </table>
+  <p style="margin-top:20px"><button class="dugme dugme-ikincil" id="cikis" type="button">Çıkış yap</button></p>
+</section>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+  if (eslesme) {
+    var deger = decodeURIComponent(eslesme[1]);
+    var kullanici = deger.split('-')[0];
+    document.getElementById('karsilama').textContent = 'Hoş geldin, ' + kullanici;
+    document.getElementById('cerez-degeri').textContent = 'oturum=' + deger;
+  }
+  document.getElementById('cikis').addEventListener('click', function () {
+    document.cookie = 'oturum=; path=/; max-age=0';
+    location.href = 'giris.html';
+  });
+</script>
+</body>
+</html>

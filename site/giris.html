@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giriş · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html" class="aktif">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<div class="iki-sutun">
+  <section class="panel">
+    <h1>Giriş yap</h1>
+    <p class="alt-baslik">Oturum ve çerez alıştırması.</p>
+    <form class="form" id="giris-formu" autocomplete="off">
+      <div>
+        <label class="baslik" for="kullanici">Kullanıcı adı</label>
+        <input type="text" id="kullanici" name="kullanici" placeholder="ogrenci">
+      </div>
+      <div>
+        <label class="baslik" for="sifre">Şifre</label>
+        <input type="password" id="sifre" name="sifre" placeholder="••••••••">
+      </div>
+      <div id="hata" class="hata gizli" role="alert">Kullanıcı adı veya şifre hatalı.</div>
+      <div><button class="dugme" id="giris-dugme" type="submit">Giriş yap</button></div>
+    </form>
+  </section>
+  <aside class="not not-mavi">
+    <strong>Deneme hesabı</strong><br>
+    Kullanıcı adı: <code>ogrenci</code><br>
+    Şifre: <code>pratik123</code><br><br>
+    Başarılı girişte tarayıcıya <code>oturum</code> adlı bir çerez yazılır ve
+    <a href="hesap.html">hesap sayfasına</a> yönlendirilirsiniz.
+  </aside>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+document.getElementById('giris-formu').addEventListener('submit', function (olay) {
+  olay.preventDefault();
+  var k = document.getElementById('kullanici').value.trim();
+  var s = document.getElementById('sifre').value;
+  var hata = document.getElementById('hata');
+  if (k === 'ogrenci' && s === 'pratik123') {
+    var jeton = Math.random().toString(16).slice(2, 10);
+    document.cookie = 'oturum=ogrenci-' + jeton + '; path=/; SameSite=Lax';
+    location.href = 'hesap.html';
+  } else {
+    hata.classList.remove('gizli');
+  }
+});
+</script>
+</body>
+</html>

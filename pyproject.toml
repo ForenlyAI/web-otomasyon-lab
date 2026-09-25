@@ -1,0 +1,15 @@
+[project]
+name = "web-otomasyon-101-lab"
+version = "1.0.0"
+description = "Web Otomasyonu 101 kursu için pratik laboratuvarı (Pratik Mağaza + örnekler)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "selenium==4.49.0",
+    "playwright==1.63.0",
+    "beautifulsoup4==4.15.0",
+    "requests==2.34.2",
+]
+
+[tool.uv]
+package = false

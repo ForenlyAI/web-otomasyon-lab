@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pencere ve Çerçeve · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html" class="aktif">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Çoklu pencere ve iframe</h1>
+<p class="alt-baslik">Yeni sekmeye geçiş ve çerçeve (iframe) içindeki elemanlarla çalışma.</p>
+<div class="iki-sutun">
+  <section class="panel">
+    <h2 style="margin-top:0">1. Yeni sekme</h2>
+    <p>Bu bağlantı yeni bir sekmede açılır. Botunuzun o sekmeye geçmesi gerekir.</p>
+    <a class="dugme" id="yeni-sekme-link" href="yeni-sekme.html" target="_blank">Yeni sekmede aç ↗</a>
+  </section>
+  <section class="panel">
+    <h2 style="margin-top:0">2. Çerçeve (iframe)</h2>
+    <p>Aşağıdaki kutu ayrı bir sayfadır. İçindeki düğmeye ulaşmak için önce çerçeveye geçin.</p>
+    <iframe id="cerceve" name="cerceve" src="cerceve.html" title="Alıştırma çerçevesi"
+            style="width:100%;height:190px;border:2px dashed #c9cfdc;border-radius:10px;background:#fff"></iframe>
+  </section>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+</body>
+</html>

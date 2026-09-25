@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+ekran/
+ornekler/4.4/kanitlar/
+*.log
+.env
+durum.json

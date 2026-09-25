@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İletişim · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html" class="aktif">İletişim</a><a href="gecikmeli.html">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Bize yazın</h1>
+<p class="alt-baslik">Form doldurma ve açık bekleme alıştırması. Gönderim 1,5 saniye sürer.</p>
+<div class="iki-sutun">
+  <form class="form panel" id="iletisim-formu" novalidate>
+    <div class="form-satir">
+      <div>
+        <label class="baslik" for="ad">Adınız</label>
+        <input type="text" id="ad" name="ad" placeholder="Ad Soyad">
+      </div>
+      <div>
+        <label class="baslik" for="eposta">E-posta</label>
+        <input type="email" id="eposta" name="eposta" placeholder="ornek@example.com">
+      </div>
+    </div>
+    <div>
+      <label class="baslik" for="konu">Konu</label>
+      <select id="konu" name="konu">
+        <option value="">Seçiniz…</option>
+        <option value="siparis">Sipariş</option>
+        <option value="iade">İade</option>
+        <option value="kargo">Kargo</option>
+        <option value="oneri">Öneri</option>
+      </select>
+    </div>
+    <div>
+      <span class="baslik" style="display:block;font-weight:700;font-size:15px;margin-bottom:5px">Öncelik</span>
+      <div class="secenekler">
+        <label><input type="radio" name="oncelik" id="oncelik-dusuk" value="dusuk" checked> Düşük</label>
+        <label><input type="radio" name="oncelik" id="oncelik-normal" value="normal"> Normal</label>
+        <label><input type="radio" name="oncelik" id="oncelik-yuksek" value="yuksek"> Yüksek</label>
+      </div>
+    </div>
+    <div>
+      <label class="baslik" for="mesaj">Mesajınız</label>
+      <textarea id="mesaj" name="mesaj" placeholder="Mesajınızı yazın…"></textarea>
+    </div>
+    <label class="onay-kutu"><input type="checkbox" id="kvkk" name="kvkk"> Aydınlatma metnini okudum, onaylıyorum.</label>
+    <div id="hata" class="hata gizli" role="alert"></div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <button class="dugme" id="gonder" type="submit">Gönder</button>
+      <span id="yukleniyor" class="yukleniyor gizli"><span class="donen"></span> Gönderiliyor…</span>
+    </div>
+  </form>
+  <aside>
+    <div id="sonuc" class="basari gizli" role="status"></div>
+    <p class="not" style="margin-top:16px">İpucu: <code>#sonuc</code> kutusu gönderimden
+      yaklaşık 1,5 saniye sonra görünür. <code>time.sleep</code> yerine açık bekleme kullanın.</p>
+  </aside>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+document.getElementById('iletisim-formu').addEventListener('submit', function (olay) {
+  olay.preventDefault();
+  var ad = document.getElementById('ad').value.trim();
+  var eposta = document.getElementById('eposta').value.trim();
+  var konu = document.getElementById('konu');
+  var mesaj = document.getElementById('mesaj').value.trim();
+  var kvkk = document.getElementById('kvkk').checked;
+  var hata = document.getElementById('hata');
+  var eksik = [];
+  if (!ad) eksik.push('ad');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(eposta)) eksik.push('geçerli e-posta');
+  if (!konu.value) eksik.push('konu');
+  if (!mesaj) eksik.push('mesaj');
+  if (!kvkk) eksik.push('onay kutusu');
+  if (eksik.length) {
+    hata.textContent = 'Eksik alan: ' + eksik.join(', ');
+    hata.classList.remove('gizli');
+    return;
+  }
+  hata.classList.add('gizli');
+  var dugme = document.getElementById('gonder');
+  var yukleniyor = document.getElementById('yukleniyor');
+  var sonuc = document.getElementById('sonuc');
+  sonuc.classList.add('gizli');
+  dugme.disabled = true;
+  yukleniyor.classList.remove('gizli');
+  var oncelik = document.querySelector('input[name="oncelik"]:checked').parentElement.textContent.trim();
+  setTimeout(function () {
+    yukleniyor.classList.add('gizli');
+    dugme.disabled = false;
+    sonuc.innerHTML = 'Mesajınız alındı<br><span style="font-weight:400">Konu: ' +
+      konu.options[konu.selectedIndex].text + ' · Öncelik: ' + oncelik + '</span>';
+    sonuc.classList.remove('gizli');
+  }, 1500);
+});
+</script>
+</body>
+</html>

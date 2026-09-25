@@ -1,0 +1,9 @@
+{
+  "name": "Web Otomasyonu 101 lab (Python 3.14 · uv 0.12.5 · Selenium 4.49 · Playwright 1.63)",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "containerEnv": { "BASLIKSIZ": "1", "UV_PYTHON": "3.14" },
+  "forwardPorts": [8000],
+  "portsAttributes": { "8000": { "label": "Pratik Mağaza", "onAutoForward": "notify" } },
+  "hostRequirements": { "cpus": 2, "memory": "4gb" },
+  "postCreateCommand": "bash .devcontainer/kur.sh"
+}

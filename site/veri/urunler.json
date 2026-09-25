@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1001,
+    "ad": "Kablosuz Kulaklık X200",
+    "kategori": "Ses",
+    "fiyat": 1249.9,
+    "stok": 24
+  },
+  {
+    "id": 1002,
+    "ad": "Akıllı Saat Fit 3",
+    "kategori": "Elektronik",
+    "fiyat": 2899.0,
+    "stok": 12
+  },
+  {
+    "id": 1003,
+    "ad": "Seramik Kupa Seti (4'lü)",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 349.5,
+    "stok": 40
+  },
+  {
+    "id": 1004,
+    "ad": "Python ile Otomasyon",
+    "kategori": "Kitap",
+    "fiyat": 289.0,
+    "stok": 18
+  },
+  {
+    "id": 1005,
+    "ad": "Yoga Matı 6 mm",
+    "kategori": "Spor",
+    "fiyat": 459.9,
+    "stok": 0
+  },
+  {
+    "id": 1006,
+    "ad": "Mekanik Klavye TR Q",
+    "kategori": "Elektronik",
+    "fiyat": 1899.0,
+    "stok": 7
+  },
+  {
+    "id": 1007,
+    "ad": "Kulak İçi Kulaklık Mini",
+    "kategori": "Ses",
+    "fiyat": 499.9,
+    "stok": 55
+  },
+  {
+    "id": 1008,
+    "ad": "Masa Lambası LED",
+    "kategori": "Ofis",
+    "fiyat": 649.0,
+    "stok": 15
+  },
+  {
+    "id": 1009,
+    "ad": "Termos 750 ml",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 389.9,
+    "stok": 33
+  },
+  {
+    "id": 1010,
+    "ad": "Koşu Ayakkabısı Hafif",
+    "kategori": "Spor",
+    "fiyat": 1749.0,
+    "stok": 9
+  },
+  {
+    "id": 1011,
+    "ad": "Bluetooth Hoparlör Taşınabilir",
+    "kategori": "Ses",
+    "fiyat": 999.0,
+    "stok": 21
+  },
+  {
+    "id": 1012,
+    "ad": "Web Kamerası 1080p",
+    "kategori": "Elektronik",
+    "fiyat": 1149.9,
+    "stok": 3
+  },
+  {
+    "id": 1013,
+    "ad": "Not Defteri A5 Noktalı",
+    "kategori": "Ofis",
+    "fiyat": 119.9,
+    "stok": 120
+  },
+  {
+    "id": 1014,
+    "ad": "Veri Bilimine Giriş",
+    "kategori": "Kitap",
+    "fiyat": 315.0,
+    "stok": 11
+  },
+  {
+    "id": 1015,
+    "ad": "Dambıl Seti 2×5 kg",
+    "kategori": "Spor",
+    "fiyat": 899.0,
+    "stok": 6
+  },
+  {
+    "id": 1016,
+    "ad": "Kablosuz Mouse Sessiz",
+    "kategori": "Elektronik",
+    "fiyat": 379.9,
+    "stok": 48
+  },
+  {
+    "id": 1017,
+    "ad": "Kahve Değirmeni Manuel",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 729.0,
+    "stok": 14
+  },
+  {
+    "id": 1018,
+    "ad": "Gürültü Önleyici Kulaklık",
+    "kategori": "Ses",
+    "fiyat": 3499.0,
+    "stok": 5
+  },
+  {
+    "id": 1019,
+    "ad": "Ergonomik Sandalye Minderi",
+    "kategori": "Ofis",
+    "fiyat": 549.0,
+    "stok": 22
+  },
+  {
+    "id": 1020,
+    "ad": "Algoritmalar Kolay Anlatım",
+    "kategori": "Kitap",
+    "fiyat": 342.5,
+    "stok": 0
+  },
+  {
+    "id": 1021,
+    "ad": "USB-C Çoklayıcı 7'si 1 Arada",
+    "kategori": "Elektronik",
+    "fiyat": 849.9,
+    "stok": 30
+  },
+  {
+    "id": 1022,
+    "ad": "Bambu Kesme Tahtası",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 229.9,
+    "stok": 60
+  },
+  {
+    "id": 1023,
+    "ad": "Atlama İpi Rulmanlı",
+    "kategori": "Spor",
+    "fiyat": 189.9,
+    "stok": 44
+  },
+  {
+    "id": 1024,
+    "ad": "Masaüstü Mikrofon USB",
+    "kategori": "Ses",
+    "fiyat": 1399.0,
+    "stok": 8
+  },
+  {
+    "id": 1025,
+    "ad": "Kalem Seti 12 Renk",
+    "kategori": "Ofis",
+    "fiyat": 99.9,
+    "stok": 200
+  },
+  {
+    "id": 1026,
+    "ad": "Taşınabilir SSD 1 TB",
+    "kategori": "Elektronik",
+    "fiyat": 2649.0,
+    "stok": 10
+  },
+  {
+    "id": 1027,
+    "ad": "Linux Komut Satırı",
+    "kategori": "Kitap",
+    "fiyat": 268.0,
+    "stok": 25
+  },
+  {
+    "id": 1028,
+    "ad": "Aroma Difüzörü",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 579.0,
+    "stok": 2
+  },
+  {
+    "id": 1029,
+    "ad": "Bisiklet Kaskı",
+    "kategori": "Spor",
+    "fiyat": 1099.0,
+    "stok": 13
+  },
+  {
+    "id": 1030,
+    "ad": "Kulaklık Standı Ahşap",
+    "kategori": "Ses",
+    "fiyat": 399.0,
+    "stok": 35
+  },
+  {
+    "id": 1031,
+    "ad": "Monitör Yükseltici",
+    "kategori": "Ofis",
+    "fiyat": 489.9,
+    "stok": 17
+  },
+  {
+    "id": 1032,
+    "ad": "Akıllı Priz Wi-Fi",
+    "kategori": "Elektronik",
+    "fiyat": 319.9,
+    "stok": 64
+  },
+  {
+    "id": 1033,
+    "ad": "Cam Saklama Kabı Seti",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 449.0,
+    "stok": 27
+  },
+  {
+    "id": 1034,
+    "ad": "Temiz Kod Rehberi",
+    "kategori": "Kitap",
+    "fiyat": 395.0,
+    "stok": 9
+  },
+  {
+    "id": 1035,
+    "ad": "Pilates Topu 65 cm",
+    "kategori": "Spor",
+    "fiyat": 279.9,
+    "stok": 19
+  },
+  {
+    "id": 1036,
+    "ad": "Pikap Plak Çalar",
+    "kategori": "Ses",
+    "fiyat": 4299.0,
+    "stok": 4
+  },
+  {
+    "id": 1037,
+    "ad": "Dosya Organizeri",
+    "kategori": "Ofis",
+    "fiyat": 179.9,
+    "stok": 53
+  },
+  {
+    "id": 1038,
+    "ad": "Powerbank 20000 mAh",
+    "kategori": "Elektronik",
+    "fiyat": 949.0,
+    "stok": 0
+  },
+  {
+    "id": 1039,
+    "ad": "Çelik Tencere Seti",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 2199.0,
+    "stok": 6
+  },
+  {
+    "id": 1040,
+    "ad": "Web Tasarımın Temelleri",
+    "kategori": "Kitap",
+    "fiyat": 299.9,
+    "stok": 16
+  },
+  {
+    "id": 1041,
+    "ad": "Direnç Bandı Seti",
+    "kategori": "Spor",
+    "fiyat": 249.0,
+    "stok": 38
+  },
+  {
+    "id": 1042,
+    "ad": "Çocuk Kulaklık Renkli",
+    "kategori": "Ses",
+    "fiyat": 449.9,
+    "stok": 29
+  },
+  {
+    "id": 1043,
+    "ad": "Yazı Tahtası Beyaz",
+    "kategori": "Ofis",
+    "fiyat": 899.9,
+    "stok": 5
+  },
+  {
+    "id": 1044,
+    "ad": "Tablet Kalemi",
+    "kategori": "Elektronik",
+    "fiyat": 1299.0,
+    "stok": 20
+  },
+  {
+    "id": 1045,
+    "ad": "Yastık Kılıfı Keten",
+    "kategori": "Ev & Yaşam",
+    "fiyat": 189.0,
+    "stok": 75
+  },
+  {
+    "id": 1046,
+    "ad": "İstatistiğe Giriş",
+    "kategori": "Kitap",
+    "fiyat": 330.0,
+    "stok": 12
+  },
+  {
+    "id": 1047,
+    "ad": "Kamp Matarası",
+    "kategori": "Spor",
+    "fiyat": 329.9,
+    "stok": 41
+  },
+  {
+    "id": 1048,
+    "ad": "Soundbar 2.1",
+    "kategori": "Ses",
+    "fiyat": 5749.0,
+    "stok": 3
+  },
+  {
+    "id": 1049,
+    "ad": "Zımba Makinesi",
+    "kategori": "Ofis",
+    "fiyat": 139.9,
+    "stok": 88
+  },
+  {
+    "id": 1050,
+    "ad": "Oyun Kolu Kablosuz",
+    "kategori": "Elektronik",
+    "fiyat": 1599.9,
+    "stok": 14
+  }
+]

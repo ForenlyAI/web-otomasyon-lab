@@ -1,0 +1,328 @@
+{
+  "baz_tarih": "2026-10-05",
+  "aciklama": "Sabit başlangıç tarihi: ekran görüntüleri her gün aynı çıksın diye tarihler bugünden değil bu tarihten hesaplanır.",
+  "gunler": [
+    {
+      "tarih": "2026-10-05",
+      "etiket": "5 Ekim 2026 Pazartesi",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": true
+        },
+        {
+          "saat": "09:30",
+          "dolu": true
+        },
+        {
+          "saat": "10:00",
+          "dolu": false
+        },
+        {
+          "saat": "10:30",
+          "dolu": false
+        },
+        {
+          "saat": "11:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:30",
+          "dolu": false
+        },
+        {
+          "saat": "14:00",
+          "dolu": true
+        },
+        {
+          "saat": "14:30",
+          "dolu": false
+        },
+        {
+          "saat": "15:00",
+          "dolu": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-06",
+      "etiket": "6 Ekim 2026 Salı",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": false
+        },
+        {
+          "saat": "09:30",
+          "dolu": false
+        },
+        {
+          "saat": "10:00",
+          "dolu": true
+        },
+        {
+          "saat": "10:30",
+          "dolu": true
+        },
+        {
+          "saat": "11:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:30",
+          "dolu": false
+        },
+        {
+          "saat": "14:00",
+          "dolu": false
+        },
+        {
+          "saat": "14:30",
+          "dolu": false
+        },
+        {
+          "saat": "15:00",
+          "dolu": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-07",
+      "etiket": "7 Ekim 2026 Çarşamba",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": true
+        },
+        {
+          "saat": "09:30",
+          "dolu": true
+        },
+        {
+          "saat": "10:00",
+          "dolu": true
+        },
+        {
+          "saat": "10:30",
+          "dolu": true
+        },
+        {
+          "saat": "11:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:30",
+          "dolu": true
+        },
+        {
+          "saat": "14:00",
+          "dolu": true
+        },
+        {
+          "saat": "14:30",
+          "dolu": true
+        },
+        {
+          "saat": "15:00",
+          "dolu": true
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-08",
+      "etiket": "8 Ekim 2026 Perşembe",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": true
+        },
+        {
+          "saat": "09:30",
+          "dolu": false
+        },
+        {
+          "saat": "10:00",
+          "dolu": true
+        },
+        {
+          "saat": "10:30",
+          "dolu": false
+        },
+        {
+          "saat": "11:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:30",
+          "dolu": true
+        },
+        {
+          "saat": "14:00",
+          "dolu": false
+        },
+        {
+          "saat": "14:30",
+          "dolu": true
+        },
+        {
+          "saat": "15:00",
+          "dolu": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-09",
+      "etiket": "9 Ekim 2026 Cuma",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": false
+        },
+        {
+          "saat": "09:30",
+          "dolu": true
+        },
+        {
+          "saat": "10:00",
+          "dolu": false
+        },
+        {
+          "saat": "10:30",
+          "dolu": false
+        },
+        {
+          "saat": "11:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:30",
+          "dolu": false
+        },
+        {
+          "saat": "14:00",
+          "dolu": false
+        },
+        {
+          "saat": "14:30",
+          "dolu": false
+        },
+        {
+          "saat": "15:00",
+          "dolu": true
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-10",
+      "etiket": "10 Ekim 2026 Cumartesi",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": true
+        },
+        {
+          "saat": "09:30",
+          "dolu": true
+        },
+        {
+          "saat": "10:00",
+          "dolu": true
+        },
+        {
+          "saat": "10:30",
+          "dolu": true
+        },
+        {
+          "saat": "11:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:30",
+          "dolu": true
+        },
+        {
+          "saat": "14:00",
+          "dolu": true
+        },
+        {
+          "saat": "14:30",
+          "dolu": false
+        },
+        {
+          "saat": "15:00",
+          "dolu": false
+        }
+      ]
+    },
+    {
+      "tarih": "2026-10-11",
+      "etiket": "11 Ekim 2026 Pazar",
+      "saatler": [
+        {
+          "saat": "09:00",
+          "dolu": false
+        },
+        {
+          "saat": "09:30",
+          "dolu": false
+        },
+        {
+          "saat": "10:00",
+          "dolu": false
+        },
+        {
+          "saat": "10:30",
+          "dolu": false
+        },
+        {
+          "saat": "11:00",
+          "dolu": false
+        },
+        {
+          "saat": "13:00",
+          "dolu": true
+        },
+        {
+          "saat": "13:30",
+          "dolu": true
+        },
+        {
+          "saat": "14:00",
+          "dolu": false
+        },
+        {
+          "saat": "14:30",
+          "dolu": false
+        },
+        {
+          "saat": "15:00",
+          "dolu": false
+        }
+      ]
+    }
+  ]
+}

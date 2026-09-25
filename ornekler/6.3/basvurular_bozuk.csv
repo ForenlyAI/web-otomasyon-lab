@@ -1,0 +1,8 @@
+ad,soyad,eposta,telefon,sehir,deneyim,aciklama
+Deneme,Örnekoğlu,ornek1@example.com,0555 000 00 01,İstanbul,yok,Bu satır sahte bir alıştırma kaydıdır.
+Test,Kullanıcıoğlu,ornek2@example.com,0555 000 00 02,Ankara,1-3,Hafta sonları çalışabilirim (sahte kayıt).
+Hatalı,Epostasız,ornek6-at-example.com,0555 000 00 06,Bursa,yok,E-postası bilerek bozuk (sahte kayıt).
+Örnek,Denemeci,ornek3@example.com,0555 000 00 03,İzmir,3+,Mağaza deneyimim var (sahte kayıt).
+Alıştırma,Yılmazörnek,ornek4@example.com,0555 000 00 04,Eskişehir,yok,Yarı zamanlı arıyorum (sahte kayıt).
+Yanlış,Şehiroğlu,ornek7@example.com,0555 000 00 07,Mars,1-3,Listede olmayan şehir (sahte kayıt).
+Sahte,Kişioğlu,ornek5@example.com,0555 000 00 05,Trabzon,1-3,"Virgüllü açıklama: esnek, hızlı, düzenli (sahte kayıt)."

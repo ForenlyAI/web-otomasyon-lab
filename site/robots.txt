@@ -1,0 +1,8 @@
+# Pratik Mağaza — tarama kuralları
+# Kibar botlar bu dosyayı taramaya başlamadan önce okur.
+User-agent: *
+Disallow: /yonetim/
+Allow: /
+
+# Lütfen istekler arasında en az 1 saniye bekleyin.
+Crawl-delay: 1

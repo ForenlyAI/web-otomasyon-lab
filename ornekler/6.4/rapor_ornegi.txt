@@ -1,0 +1,19 @@
+BİTİRME RAPORU (örnek) · Ürün listesi botu · Pratik Mağaza
+İş: önce elle 5 sayfayı gezip 50 ürünü tabloya kopyalıyordum; şimdi bot yapıyor.
+Çalıştırma: uv run python ornekler/6.4/bitirme_ornek.py
+Çıktı: urunler.csv (50 satır) + bot.log
+
+[x] Ç1 ÇALIŞIR  hatasız çalıştı, çıkış kodu 0, urunler.csv üretildi
+[x] Ç2 BEKLEME  WebDriverWait; sayfa arası 1 sn = robots.txt Crawl-delay
+[x] Ç3 HATA     zaman aşımı yakalanır, günlüğe yazılır, bot temiz çıkar
+[x] Ç4 CSV      başlıklı, UTF-8, 50 satır; sütunlar id,ad,kategori,fiyat,stok
+[x] Ç5 GÜNLÜK   zaman damgalı: başladı, 5 sayfa satırı, bitti: 50 kayıt
+[x] Ç6 İZİN     robots.txt: "Disallow: /yonetim/", "Crawl-delay: 1";
+                koşullar: kurs alıştırma sitesi; resmi API: yok;
+                istek aralığı: sayfa başına 1 sn
+[x] Ç7 RAPOR    bu sayfa
+[x] Ç8 ÇİZGİ    CAPTCHA aşma yok, adres değiştirme yok, kodda parola yok,
+                kişisel veri yok
+
+Bilinen sınırlar: yalnız Pratik Mağaza için yazıldı; sayfa yapısı değişirse
+seçiciler güncellenmeli; CAPTCHA'da durur (çıkış kodu 3), insan bakmalı.

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gecikmeli İçerik · Pratik Mağaza</title>
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<!-- ust:basla --><header class="ust"><div class="ust-ic"><a class="logo" href="index.html"><span class="logo-isaret">P</span>Pratik Mağaza</a><nav class="menu" id="menu" aria-label="Ana menü"><a href="index.html">Mağaza</a><a href="urunler/sayfa-1.html">Ürünler</a><a href="tablo.html">Tablo</a><a href="giris.html">Giriş</a><a href="iletisim.html">İletişim</a><a href="gecikmeli.html" class="aktif">Gecikmeli</a><a href="sonsuz.html">Sonsuz</a><a href="pencere.html">Pencere</a><a href="randevu.html">Randevu</a><a href="basvuru.html">Başvuru</a><a href="captcha.html">CAPTCHA</a></nav></div></header><!-- ust:bitti -->
+<main>
+<h1>Gecikmeli içerik</h1>
+<p class="alt-baslik">Liste 2–4 saniye içinde (her seferinde farklı) yüklenir. Düğme 3 saniye sonra etkinleşir.</p>
+<div class="iki-sutun">
+  <section class="panel">
+    <h2 style="margin-top:0">Bugünün fırsatları</h2>
+    <div id="yukleniyor" class="yukleniyor"><span class="donen"></span> Liste yükleniyor…</div>
+    <ul id="liste" style="font-size:18px;line-height:1.9;margin:0"></ul>
+    <p id="oge-sayisi" style="font-weight:700;margin-bottom:0"></p>
+  </section>
+  <section class="panel">
+    <h2 style="margin-top:0">Hazır mısınız?</h2>
+    <p>Bu düğme sayfa açıldıktan 3 saniye sonra tıklanabilir olur.</p>
+    <button class="dugme" id="hazir" type="button" disabled>Hazırım</button>
+    <p id="hazir-mesaj" class="basari gizli" style="margin-top:16px">Düğmeye tıklandı!</p>
+    <p class="not" style="margin-top:16px">Selenium: <code>element_to_be_clickable</code>,
+      Playwright: otomatik bekleme. <code>time.sleep</code> kullanmayın.</p>
+  </section>
+</div>
+</main>
+<!-- alt:basla --><footer class="alt">Pratik Mağaza — Web Otomasyonu 101 alıştırma sitesi. Gerçek bir mağaza değildir: sipariş, ödeme ve kişisel veri yoktur.</footer><!-- alt:bitti -->
+<script>
+(function () {
+  var OGELER = ['Kablosuz Kulaklık X200 — %15 indirim', 'Termos 750 ml — 2 al 1 öde',
+                'Mekanik Klavye TR Q — kargo bedava', 'Yoga Matı 6 mm — yeniden stokta',
+                'Not Defteri A5 — 3 al 2 öde', 'Powerbank 20000 mAh — ön sipariş'];
+  var gecikme = 2000 + Math.floor(Math.random() * 2001); // 2–4 saniye
+  document.body.setAttribute('data-gecikme-ms', gecikme);
+  setTimeout(function () {
+    var liste = document.getElementById('liste');
+    OGELER.forEach(function (metin) {
+      var li = document.createElement('li');
+      li.className = 'oge';
+      li.textContent = metin;
+      liste.appendChild(li);
+    });
+    document.getElementById('yukleniyor').classList.add('gizli');
+    document.getElementById('oge-sayisi').textContent = OGELER.length + ' öğe yüklendi';
+  }, gecikme);
+  setTimeout(function () { document.getElementById('hazir').disabled = false; }, 3000);
+  document.getElementById('hazir').addEventListener('click', function () {
+    document.getElementById('hazir-mesaj').classList.remove('gizli');
+  });
+})();
+</script>
+</body>
+</html>
