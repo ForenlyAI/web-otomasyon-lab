@@ -15,6 +15,11 @@ Forenly AI Academy **Web Otomasyonu 101** kursunun çalışma ortamı: çevrimd�
    ```
 4. Siteyi tarayıcıda görmek için `uv run python sunucu.py` çalıştırın; **Ports** sekmesindeki 8000 adresini açın.
 
+> **Bilinen sınır (2026-09-25 ölçüldü):** Codespace kapsayıcısında Chrome'un korumalı alanı (sandbox) açılamadığı için
+> **Selenium** örnekleri (1.1–2.4, 4.1 selenium_bekleme, 5.1 sure_olcumu, 5.3, 6.1, 6.3, 6.4) Codespace'te çalışmaz.
+> Playwright, requests ve BeautifulSoup örnekleri (3.x, 4.x, 5.2, 5.4, 6.2) çalışır. Selenium dersleri için
+> aşağıdaki "Kendi bilgisayarınızda" kurulumunu kullanın.
+
 Codespace'te ekran yoktur; örnekler başlıksız (headless) çalışır (`BASLIKSIZ=1` hazır ayarlıdır).
 Ekran görüntüleri `ekran/<ders>/` klasörüne yazılır, soldaki dosya gezgininden açabilirsiniz.
 İşiniz bitince Codespace'i durdurun (github.com/codespaces), kotanız boşa harcanmaz.
